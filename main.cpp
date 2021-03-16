@@ -33,10 +33,11 @@ bool operator!(){ return text.length() == 0;}
     void operator>>(std::string& mod){//mod is the parameter, a string that will be modified in this method
       for(unsigned int i =0; i < text.length(); i=i+1){
      dec_conversion = static_cast<int>(text[i]);//getting the int value of each charcter in string text
-     if(dec_conversion ==32){//check for space in the string
+     if(dec_conversion==32){//check for space in the string
         mod = mod + static_cast<char>(dec_conversion);
        continue;//to break one itteration in the loop
      }
+     
      dec_conversion = dec_conversion + rotation;//rotation is used to fast forward 13 letters in the alphabet
 
       if (dec_conversion > 122){ //note that decimal number 122 is letter z
@@ -62,6 +63,8 @@ void operator<<(std::string& original_msg, Rot13& encrypted_msg){
           continue;//to break one itteration in this loop
         }
         dec_conversion2 = dec_conversion2 - encrypted_msg.rotation;//we are reversing Rot13 key encryption since we are trying to go back 13 characters to decode
+
+
         if (dec_conversion2 < 97){
           dec_conversion2=97-dec_conversion2;
           dec_conversion2=123-dec_conversion2;
